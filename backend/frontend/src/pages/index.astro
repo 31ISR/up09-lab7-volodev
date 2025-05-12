@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getArticles } from '../utils/api';
+
+const articles = await getArticles();
+const featuredArticles = articles.slice(0, 3);
+const recentArticles = articles.slice(3, 6);
+---
+
+<BaseLayout title="Главная | MusicBlog" description="Лучшие статьи о музыке">
+  <section class="hero">
+    <div class="container">
+      <h1>Добро пожаловать в MusicBlog</h1>
+      <p>Лучшие статьи о музыке, музыкантах и индустрии</p>
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="container">
+      <h2>Избранные статьи</h2>
+      <div class="featured-grid">
+        {featuredArticles.map(article => (
+          <ArticleCard article={article} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="recent">
+    <div class="container">
+      <h2>Последние статьи</h2>
+      <div class="recent-grid">
+        {recentArticles.map(article => (
+          <ArticleCard article={article} />
+        ))}
+      </div>
+      <a href="/blog" class="btn">Все статьи</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 5rem 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  section {
+    margin-bottom: 3rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--primary);
+  }
+  
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .recent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .btn:hover {
+    background: var(--secondary);
+  }
+</style>

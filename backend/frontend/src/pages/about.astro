@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="О нас | MusicBlog" description="Информация о нашем блоге">
+  <section class="about">
+    <div class="container">
+      <h1>О нашем блоге</h1>
+      <div class="about-content">
+        <p>MusicBlog - это платформа для любителей музыки, где мы публикуем интересные статьи, обзоры и новости из мира музыки.</p>
+        <p>Наша миссия - делиться знаниями и вдохновлять людей через музыку.</p>
+        <h2>Наша команда</h2>
+        <p>Мы - группа энтузиастов, которые любят музыку и хотят делиться этой любовью с другими.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about {
+    padding: 2rem 0;
+  }
+  
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  .about-content p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-content h2 {
+    color: var(--primary);
+    margin: 2rem 0 1rem;
+  }
+</style>

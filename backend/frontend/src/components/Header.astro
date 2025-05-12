@@ -1,0 +1,56 @@
+---
+import ThemeToggle from './ThemeToggle.jsx';
+import HamburgerMenu from './HamburgerMenu.jsx';
+---
+
+<header>
+  <div class="container">
+    <a href="/" class="logo">MusicBlog</a>
+    
+    <nav class="desktop-nav">
+      <a href="/blog">Блог</a>
+      <a href="/about">О нас</a>
+      <ThemeToggle client:load />
+    </nav>
+    
+    <HamburgerMenu client:load />
+  </div>
+</header>
+
+<style>
+  header {
+    background-color: var(--bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+  }
+  
+  .desktop-nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none;
+    }
+  }
+</style>

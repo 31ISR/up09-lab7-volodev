@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getArticles } from '../../utils/api';
+
+const articles = await getArticles();
+---
+
+<BaseLayout title="Блог | MusicBlog" description="Все статьи нашего блога">
+  <section class="blog">
+    <div class="container">
+      <h1>Блог</h1>
+      <div class="blog-grid">
+        {articles.map(article => (
+          <ArticleCard article={article} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog {
+    padding: 2rem 0;
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+</style>
